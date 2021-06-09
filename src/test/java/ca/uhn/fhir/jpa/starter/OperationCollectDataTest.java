@@ -59,13 +59,21 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 		// Override is currently required when using Empi as the construction of the
 		// Empi beans are ambiguous as they are constructed multiple places. This is
 		// evident when running in a spring boot environment
-		"spring.main.allow-bean-definition-overriding=true"
-})
+		"spring.main.allow-bean-definition-overriding=true" 
+	})
 public class OperationCollectDataTest {
 
 	private static final String OBS_FILE_PATH = "ObsBundle.json";
 
+	private static final String OBS_FILE_PATH2 = "ObsBundle2.json";
+
+	private static final String OBS_FILE_XML_PATH2 = "ObsBundle2.xml";
+
 	private static final String MEASURE_FILE_PATH = "FhirMeasure.json";
+
+	private static final String MEASURE2_FILE_PATH = "FhirMeasure2.json";
+
+	private static final String MEASURE2_XML_FILE_PATH = "FhirMeasure2.xml";
 
 	private static String OBS_FILE_XML_PATH = "ObsBundle.xml";
 
@@ -76,6 +84,8 @@ public class OperationCollectDataTest {
 	public static final MediaType FHIR_XML_MEDIA_TYPE = MediaType.valueOf("application/fhir+xml");
 
 	private static final String MEASURE_RESOURCE_ID = "TX-PVLS";
+
+	private static final String MEASURE_RESOURCE2_ID = "TX-CURR";
 
 	private static final String UNDER_SCORE_MEASURE_RESOURCE_ID = "TX_PVLS";
 
@@ -141,7 +151,83 @@ public class OperationCollectDataTest {
 
 		Observation observation2 = (Observation) result.getParameter().get(2).getResource();
 		assertEquals(observation2.getCode().getCodingFirstRep().getCode(), "856AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-	}	
+	}
+
+	@Test
+	public void testCollectDataOperationOnJsonDataForTX_CURR() throws IOException {
+		// Post the Measure Resource
+		Measure measure = readMeasureFromJsonFileTX_CURR();
+		ourClient.update().resource(measure).withId(MEASURE_RESOURCE2_ID).encodedJson().execute();
+
+		// post the obs bundle
+		postResource(ourServerBase, OBS_FILE_PATH2);
+
+		// fetch parameter result from the operation
+		Parameters result = fetchParameter(ourServerBase + "/Measure/" + MEASURE_RESOURCE2_ID
+				+ "/$collect-data?periodStart=2021-05-28&periodEnd=2021-06-01");
+
+		assertTrue(result.hasParameter(PARAM_NAME1));
+		assertTrue(result.hasParameter(PARAM_NAME2));
+		assertEquals(5, result.getParameter().size());
+
+		assertTrue(result.getParameter().get(0).getResource() instanceof MeasureReport);
+		assertTrue(result.getParameter().get(1).getResource() instanceof Observation);
+		assertTrue(result.getParameter().get(2).getResource() instanceof Observation);
+		assertTrue(result.getParameter().get(3).getResource() instanceof Patient);
+		assertTrue(result.getParameter().get(4).getResource() instanceof Patient);
+
+		// get measure report from the Parameter Result
+		MeasureReport report = (MeasureReport) result.getParameter().get(0).getResource();
+		assertEquals(report.getEvaluatedResource().size(), 4);
+		assertEquals(report.getMeasure(), "Measure/TX_CURR");
+		assertEquals(report.getStatus(), MeasureReport.MeasureReportStatus.COMPLETE);
+		assertEquals(report.getType(), MeasureReport.MeasureReportType.DATACOLLECTION);
+
+		// get Observation Bundle from the Parameter Result
+		Observation observation1 = (Observation) result.getParameter().get(1).getResource();
+		assertEquals(observation1.getCode().getCodingFirstRep().getCode(), "160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+
+		Observation observation2 = (Observation) result.getParameter().get(2).getResource();
+		assertEquals(observation2.getCode().getCodingFirstRep().getCode(), "160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+	}
+
+	@Test
+	public void testCollectDataOperationOnXmlDataForTX_CURR() throws IOException {
+		// Post the Measure Resource
+		Measure measure = readMeasureFromXmlFileTX_CURR();
+		ourClient.update().resource(measure).withId(MEASURE_RESOURCE2_ID).encodedXml().execute();
+
+		// post the obs bundle
+		postResource(ourServerBase, OBS_FILE_XML_PATH2);
+
+		// fetch parameter result from the operation
+		Parameters result = fetchParameter(ourServerBase + "/Measure/" + MEASURE_RESOURCE2_ID
+				+ "/$collect-data?periodStart=2021-05-28&periodEnd=2021-06-01");
+
+		assertTrue(result.hasParameter(PARAM_NAME1));
+		assertTrue(result.hasParameter(PARAM_NAME2));
+		assertEquals(5, result.getParameter().size());
+
+		assertTrue(result.getParameter().get(0).getResource() instanceof MeasureReport);
+		assertTrue(result.getParameter().get(1).getResource() instanceof Observation);
+		assertTrue(result.getParameter().get(2).getResource() instanceof Observation);
+		assertTrue(result.getParameter().get(3).getResource() instanceof Patient);
+		assertTrue(result.getParameter().get(4).getResource() instanceof Patient);
+
+		// get measure report from the Parameter Result
+		MeasureReport report = (MeasureReport) result.getParameter().get(0).getResource();
+		assertEquals(report.getEvaluatedResource().size(), 4);
+		assertEquals(report.getMeasure(), "Measure/TX_CURR");
+		assertEquals(report.getStatus(), MeasureReport.MeasureReportStatus.COMPLETE);
+		assertEquals(report.getType(), MeasureReport.MeasureReportType.DATACOLLECTION);
+
+		// get Observation Bundle from the Parameter Result
+		Observation observation1 = (Observation) result.getParameter().get(1).getResource();
+		assertEquals(observation1.getCode().getCodingFirstRep().getCode(), "160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+
+		Observation observation2 = (Observation) result.getParameter().get(2).getResource();
+		assertEquals(observation2.getCode().getCodingFirstRep().getCode(), "160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+	}
 
 	@Test
 	public void testCollectDataOperationOnXmlData() throws IOException {
@@ -303,23 +389,23 @@ public class OperationCollectDataTest {
 			String mimeType = contentType.getValue();
 
 			MediaType responseMediaType = MediaType.parseMediaType(mimeType);
-			if (FHIR_JSON_MEDIA_TYPE.isCompatibleWith(responseMediaType) || MediaType.APPLICATION_JSON.isCompatibleWith(responseMediaType)) {
+			if (FHIR_JSON_MEDIA_TYPE.isCompatibleWith(responseMediaType)
+					|| MediaType.APPLICATION_JSON.isCompatibleWith(responseMediaType)) {
 				parser = ourCtx.newJsonParser();
-			} else if (FHIR_XML_MEDIA_TYPE.isCompatibleWith(responseMediaType) || MediaType.APPLICATION_XML.isCompatibleWith(responseMediaType) || MediaType.TEXT_XML.isCompatibleWith(responseMediaType)) {
+			} else if (FHIR_XML_MEDIA_TYPE.isCompatibleWith(responseMediaType)
+					|| MediaType.APPLICATION_XML.isCompatibleWith(responseMediaType)
+					|| MediaType.TEXT_XML.isCompatibleWith(responseMediaType)) {
 				parser = ourCtx.newXmlParser();
-			}
-			 else {
+			} else {
 				throw new AssertionError("Cannot handle response of type " + responseMediaType.toString());
 			}
-	
-			return parser.parseResource(Parameters.class,
-				  EntityUtils.toString(resp.getEntity(), Charsets.UTF_8));
+
+			return parser.parseResource(Parameters.class, EntityUtils.toString(resp.getEntity(), Charsets.UTF_8));
 		}
-             
+
 	}
 
-	private void postResource(String theUrl, String filePath)
-			throws IOException {
+	private void postResource(String theUrl, String filePath) throws IOException {
 		HttpPost post = new HttpPost(theUrl);
 
 		if (FilenameUtils.getExtension(filePath).equals("json")) {
@@ -349,9 +435,9 @@ public class OperationCollectDataTest {
 
 		try (CloseableHttpResponse res = ourHttpClient.execute(post)) {
 			if (res.getStatusLine().getStatusCode() != 200) {
-				throw new IllegalStateException(
-						"Attempting to POST resource bundle failed with status code " + res.getStatusLine().getStatusCode()
-								+ " " + EntityUtils.toString(res.getEntity(), StandardCharsets.UTF_8));
+				throw new IllegalStateException("Attempting to POST resource bundle failed with status code "
+						+ res.getStatusLine().getStatusCode() + " "
+						+ EntityUtils.toString(res.getEntity(), StandardCharsets.UTF_8));
 			}
 		}
 	}
@@ -372,10 +458,25 @@ public class OperationCollectDataTest {
 		IParser parser = ourCtx.newJsonParser();
 		return parser.parseResource(Measure.class, json);
 	}
+
 	public Measure readMeasureFromXmlFile() throws IOException {
 		String xml = readFile(MEASURE_XML_FILE_PATH);
-	
+
 		IParser parser = ourCtx.newXmlParser();
 		return parser.parseResource(Measure.class, xml);
-	  }
+	}
+
+	public Measure readMeasureFromJsonFileTX_CURR() throws IOException {
+		String json = readFile(MEASURE2_FILE_PATH);
+
+		IParser parser = ourCtx.newJsonParser();
+		return parser.parseResource(Measure.class, json);
+	}
+
+	public Measure readMeasureFromXmlFileTX_CURR() throws IOException {
+		String xml = readFile(MEASURE2_XML_FILE_PATH);
+
+		IParser parser = ourCtx.newXmlParser();
+		return parser.parseResource(Measure.class, xml);
+	}
 }

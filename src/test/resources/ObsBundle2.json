@@ -1,0 +1,280 @@
+{
+    "resourceType": "Bundle",
+    "type": "transaction",
+    "entry": [
+        {
+            "resource": {
+                "resourceType": "Observation",
+                "id": "129fea84-0e29-4530-a62e-ea00ffb067e4",
+                "status": "final",
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                                "code": "exam",
+                                "display": "Exam"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                            "display": "Weight (kg)"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/657865b6-8f02-49e2-8a77-21b73eb266d4",
+                    "type": "Patient",
+                    "display": "obs_patient2 obs_patient2 obs_patient2 (OpenMRS ID: 10003P)"
+                },
+                "encounter": {
+                    "reference": "Encounter/3d0ecfb4-9dec-4daa-a261-e37e426d0d7b",
+                    "type": "Encounter"
+                },
+                "effectiveDateTime": "2021-06-01T08:14:44+00:00",
+                "issued": "2021-06-01T08:14:44.000+00:00",
+                "valueQuantity": {
+                    "value": 88
+                }
+            },
+            "request": {
+                "method": "POST",
+                "url": "Observation"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Observation",
+                "id": "2aa6d708-653c-485b-a413-ef9b7541213f",
+                "status": "final",
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                                "code": "exam",
+                                "display": "Exam"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                            "display": "Weight (kg)"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/6f5a1daf-e25b-43c7-9b4f-6764294abe1a",
+                    "type": "Patient",
+                    "display": "obs_patient1 obs_patient1 obs_patient1 (OpenMRS ID: 10002T)"
+                },
+                "encounter": {
+                    "reference": "Encounter/85feb82a-b2b1-4b1a-9f9b-c1920a9d895e",
+                    "type": "Encounter"
+                },
+                "effectiveDateTime": "2021-06-01T08:15:30+00:00",
+                "issued": "2021-06-01T08:15:30.000+00:00",
+                "valueQuantity": {
+                    "value": 99
+                }
+            },
+            "request": {
+                "method": "POST",
+                "url": "Observation"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Observation",
+                "id": "25f653d7-da5c-4cb8-8ae7-b4fd875862f8",
+                "status": "final",
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                                "code": "laboratory",
+                                "display": "Laboratory"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                            "display": "ANTI-RETROVIRAL THERAPY (ART)"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/9c5162a4-1cbb-4239-8813-da2d10be1ff4",
+                    "type": "Patient",
+                    "display": "Obs_Test2 Obs_Test2 Obs_Test2 (OpenMRS ID: 10001V)"
+                },
+                "encounter": {
+                    "reference": "Encounter/13cbf9b8-24fa-4806-8f2b-8e4f489b1f96",
+                    "type": "Encounter"
+                },
+                "effectiveDateTime": "2021-06-01T08:12:28+00:00",
+                "issued": "2021-06-01T08:12:28.000+00:00",
+                "valueCodeableConcept": {
+                    "coding": [
+                        {
+                            "code": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                            "display": "YES"
+                        }
+                    ]
+                }
+            },
+            "request": {
+                "method": "POST",
+                "url": "Observation"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Observation",
+                "id": "58a546bc-77e6-46b1-bb2b-8179cd66e8c3",
+                "status": "final",
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                                "code": "exam",
+                                "display": "Exam"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                            "display": "Height (cm)"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/457865b6-8f02-49e2-8a77-21b73eb266d4",
+                    "type": "Patient",
+                    "display": "obs_patient2 obs_patient2 obs_patient2 (OpenMRS ID: 10003P)"
+                },
+                "encounter": {
+                    "reference": "Encounter/2d0ecfb4-9dec-4daa-a261-e37e426d0d7b",
+                    "type": "Encounter"
+                },
+                "effectiveDateTime": "2021-06-01T08:14:44+00:00",
+                "issued": "2021-06-01T08:14:44.000+00:00",
+                "valueQuantity": {
+                    "value": 99
+                }
+            },
+            "request": {
+                "method": "POST",
+                "url": "Observation"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Observation",
+                "id": "e173843e-12d7-4c7a-b02d-7a1637c008cb",
+                "status": "final",
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                                "code": "laboratory",
+                                "display": "Laboratory"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                            "display": "ANTI-RETROVIRAL THERAPY (ART)"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/337679e5-aae4-4d95-8583-758e6551b953",
+                    "type": "Patient",
+                    "display": "Obs_Test1 Obs_Test1 Obs_Test1 (OpenMRS ID: 10000X)"
+                },
+                "encounter": {
+                    "reference": "Encounter/4b91bc4f-9eef-4144-a88f-d8998ae932cf",
+                    "type": "Encounter"
+                },
+                "effectiveDateTime": "2021-06-01T08:11:12+00:00",
+                "issued": "2021-06-01T08:11:12.000+00:00",
+                "valueCodeableConcept": {
+                    "coding": [
+                        {
+                            "code": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                            "display": "YES"
+                        }
+                    ]
+                }
+            },
+            "request": {
+                "method": "POST",
+                "url": "Observation"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Observation",
+                "id": "e9ba1769-93cb-40fe-a567-51473c809538",
+                "status": "final",
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                                "code": "exam",
+                                "display": "Exam"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                            "display": "Height (cm)"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/5f5a1daf-e25b-43c7-9b4f-6764294abe1a",
+                    "type": "Patient",
+                    "display": "obs_patient1 obs_patient1 obs_patient1 (OpenMRS ID: 10002T)"
+                },
+                "encounter": {
+                    "reference": "Encounter/95feb82a-b2b1-4b1a-9f9b-c1920a9d895e",
+                    "type": "Encounter"
+                },
+                "effectiveDateTime": "2021-06-01T08:15:30+00:00",
+                "issued": "2021-06-01T08:15:30.000+00:00",
+                "valueQuantity": {
+                    "value": 44
+                }
+            },
+            "request": {
+                "method": "POST",
+                "url": "Observation"
+            }
+        }
+    ]
+}

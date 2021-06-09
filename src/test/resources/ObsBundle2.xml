@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bundle xmlns="http://hl7.org/fhir">
+	<type value="transaction" />
+	<entry>
+		<resource>
+			<Observation>
+				<id value="129fea84-0e29-4530-a62e-ea00ffb067e4" />
+				<status value="final" />
+				<category>
+					<coding>
+						<system value="http://terminology.hl7.org/CodeSystem/observation-category" />
+						<code value="exam" />
+						<display value="Exam" />
+					</coding>
+				</category>
+				<code>
+					<coding>
+						<code value="5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+						<display value="Weight (kg)" />
+					</coding>
+				</code>
+				<subject>
+					<reference value="Patient/657865b6-8f02-49e2-8a77-21b73eb266d4" />
+					<type value="Patient" />
+					<display value="obs_patient2 obs_patient2 obs_patient2 (OpenMRS ID: 10003P)" />
+				</subject>
+				<encounter>
+					<reference value="Encounter/3d0ecfb4-9dec-4daa-a261-e37e426d0d7b" />
+					<type value="Encounter" />
+				</encounter>
+				<effectiveDateTime value="2021-06-01T08:14:44+00:00" />
+				<issued value="2021-06-01T08:14:44.000+00:00" />
+				<valueQuantity>
+					<value value="88" />
+				</valueQuantity>
+			</Observation>
+		</resource>
+		<request>
+			<method value="POST" />
+			<url value="Observation" />
+		</request>
+	</entry>
+	<entry>
+		<resource>
+			<Observation>
+				<id value="2aa6d708-653c-485b-a413-ef9b7541213f" />
+				<status value="final" />
+				<category>
+					<coding>
+						<system value="http://terminology.hl7.org/CodeSystem/observation-category" />
+						<code value="exam" />
+						<display value="Exam" />
+					</coding>
+				</category>
+				<code>
+					<coding>
+						<code value="5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+						<display value="Weight (kg)" />
+					</coding>
+				</code>
+				<subject>
+					<reference value="Patient/6f5a1daf-e25b-43c7-9b4f-6764294abe1a" />
+					<type value="Patient" />
+					<display value="obs_patient1 obs_patient1 obs_patient1 (OpenMRS ID: 10002T)" />
+				</subject>
+				<encounter>
+					<reference value="Encounter/85feb82a-b2b1-4b1a-9f9b-c1920a9d895e" />
+					<type value="Encounter" />
+				</encounter>
+				<effectiveDateTime value="2021-06-01T08:15:30+00:00" />
+				<issued value="2021-06-01T08:15:30.000+00:00" />
+				<valueQuantity>
+					<value value="99" />
+				</valueQuantity>
+			</Observation>
+		</resource>
+		<request>
+			<method value="POST" />
+			<url value="Observation" />
+		</request>
+	</entry>
+	<entry>
+		<resource>
+			<Observation>
+				<id value="25f653d7-da5c-4cb8-8ae7-b4fd875862f8" />
+				<status value="final" />
+				<category>
+					<coding>
+						<system value="http://terminology.hl7.org/CodeSystem/observation-category" />
+						<code value="laboratory" />
+						<display value="Laboratory" />
+					</coding>
+				</category>
+				<code>
+					<coding>
+						<code value="160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+						<display value="ANTI-RETROVIRAL THERAPY (ART)" />
+					</coding>
+				</code>
+				<subject>
+					<reference value="Patient/9c5162a4-1cbb-4239-8813-da2d10be1ff4" />
+					<type value="Patient" />
+					<display value="Obs_Test2 Obs_Test2 Obs_Test2 (OpenMRS ID: 10001V)" />
+				</subject>
+				<encounter>
+					<reference value="Encounter/13cbf9b8-24fa-4806-8f2b-8e4f489b1f96" />
+					<type value="Encounter" />
+				</encounter>
+				<effectiveDateTime value="2021-06-01T08:12:28+00:00" />
+				<issued value="2021-06-01T08:12:28.000+00:00" />
+				<valueCodeableConcept>
+					<coding>
+						<code value="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+						<display value="YES" />
+					</coding>
+				</valueCodeableConcept>
+			</Observation>
+		</resource>
+		<request>
+			<method value="POST" />
+			<url value="Observation" />
+		</request>
+	</entry>
+	<entry>
+		<resource>
+			<Observation>
+				<id value="58a546bc-77e6-46b1-bb2b-8179cd66e8c3" />
+				<status value="final" />
+				<category>
+					<coding>
+						<system value="http://terminology.hl7.org/CodeSystem/observation-category" />
+						<code value="exam" />
+						<display value="Exam" />
+					</coding>
+				</category>
+				<code>
+					<coding>
+						<code value="5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+						<display value="Height (cm)" />
+					</coding>
+				</code>
+				<subject>
+					<reference value="Patient/457865b6-8f02-49e2-8a77-21b73eb266d4" />
+					<type value="Patient" />
+					<display value="obs_patient2 obs_patient2 obs_patient2 (OpenMRS ID: 10003P)" />
+				</subject>
+				<encounter>
+					<reference value="Encounter/2d0ecfb4-9dec-4daa-a261-e37e426d0d7b" />
+					<type value="Encounter" />
+				</encounter>
+				<effectiveDateTime value="2021-06-01T08:14:44+00:00" />
+				<issued value="2021-06-01T08:14:44.000+00:00" />
+				<valueQuantity>
+					<value value="99" />
+				</valueQuantity>
+			</Observation>
+		</resource>
+		<request>
+			<method value="POST" />
+			<url value="Observation" />
+		</request>
+	</entry>
+	<entry>
+		<resource>
+			<Observation>
+				<id value="e173843e-12d7-4c7a-b02d-7a1637c008cb" />
+				<status value="final" />
+				<category>
+					<coding>
+						<system value="http://terminology.hl7.org/CodeSystem/observation-category" />
+						<code value="laboratory" />
+						<display value="Laboratory" />
+					</coding>
+				</category>
+				<code>
+					<coding>
+						<code value="160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+						<display value="ANTI-RETROVIRAL THERAPY (ART)" />
+					</coding>
+				</code>
+				<subject>
+					<reference value="Patient/337679e5-aae4-4d95-8583-758e6551b953" />
+					<type value="Patient" />
+					<display value="Obs_Test1 Obs_Test1 Obs_Test1 (OpenMRS ID: 10000X)" />
+				</subject>
+				<encounter>
+					<reference value="Encounter/4b91bc4f-9eef-4144-a88f-d8998ae932cf" />
+					<type value="Encounter" />
+				</encounter>
+				<effectiveDateTime value="2021-06-01T08:11:12+00:00" />
+				<issued value="2021-06-01T08:11:12.000+00:00" />
+				<valueQuantity>
+					<value value="23" />
+				</valueQuantity>
+			</Observation>
+		</resource>
+		<request>
+			<method value="POST" />
+			<url value="Observation" />
+		</request>
+	</entry>
+	<entry>
+		<resource>
+			<Observation>
+				<id value="e9ba1769-93cb-40fe-a567-51473c809538" />
+				<status value="final" />
+				<category>
+					<coding>
+						<system value="http://terminology.hl7.org/CodeSystem/observation-category" />
+						<code value="exam" />
+						<display value="Exam" />
+					</coding>
+				</category>
+				<code>
+					<coding>
+						<code value="5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+						<display value="Height (cm)" />
+					</coding>
+				</code>
+				<subject>
+					<reference value="Patient/5f5a1daf-e25b-43c7-9b4f-6764294abe1a" />
+					<type value="Patient" />
+					<display value="obs_patient1 obs_patient1 obs_patient1 (OpenMRS ID: 10002T)" />
+				</subject>
+				<encounter>
+					<reference value="Encounter/95feb82a-b2b1-4b1a-9f9b-c1920a9d895e" />
+					<type value="Encounter" />
+				</encounter>
+				<effectiveDateTime value="2021-06-01T08:15:30+00:00" />
+				<issued value="2021-06-01T08:15:30.000+00:00" />
+				<valueQuantity>
+					<value value="44" />
+				</valueQuantity>
+			</Observation>
+		</resource>
+		<request>
+			<method value="POST" />
+			<url value="Observation" />
+		</request>
+	</entry>
+</Bundle>
