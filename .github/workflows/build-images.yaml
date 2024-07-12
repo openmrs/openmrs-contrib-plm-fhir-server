@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Docker meta
         id: docker_meta
-        uses: crazy-max/ghaction-docker-meta@v1
+        uses: crazy-max/ghaction-docker-meta@v3
         with:
           images: |
             ghcr.io/hapifhir/hapi
@@ -24,7 +24,7 @@ jobs:
       # waiting for https://github.com/crazy-max/ghaction-docker-meta/issues/13 for a cleaner solution
       - name: Docker distroless meta
         id: docker_distroless_meta
-        uses: crazy-max/ghaction-docker-meta@v1
+        uses: crazy-max/ghaction-docker-meta@v3
         with:
           images: |
             ghcr.io/hapifhir/hapi
@@ -33,24 +33,24 @@ jobs:
           tag-match: "v(.*)"
           sep-tags: -distroless,
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
+        uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+        uses: docker/setup-buildx-action@v3
       - name: Login to DockerHub
-        uses: docker/login-action@v1
+        uses: docker/login-action@v3
         if: github.event_name != 'pull_request'
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
+        uses: docker/login-action@v3
         if: github.event_name != 'pull_request'
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GHCR_TOKEN }}
       - name: Cache Docker layers
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: /tmp/.buildx-cache
           key: ${{ runner.os }}-buildx-${{ github.sha }}
@@ -58,7 +58,7 @@ jobs:
             ${{ runner.os }}-buildx-
       - name: Build and push
         id: docker_build
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v6
         with:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
@@ -67,7 +67,7 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
       - name: Build and push distroless
         id: docker_build_distroless
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v6
         with:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
@@ -79,3 +79,9 @@ jobs:
         run: |
           echo ${{ steps.docker_build.outputs.digest }}
           echo ${{ steps.docker_build_distroless.outputs.digest }}
+      - name: Logout from DockerHub
+        run: docker logout
+        if: github.event_name != 'pull_request'
+      - name: Logout from GitHub Container Registry
+        run: docker logout ghcr.io
+        if: github.event_name != 'pull_request'
