@@ -79,9 +79,3 @@ jobs:
         run: |
           echo ${{ steps.docker_build.outputs.digest }}
           echo ${{ steps.docker_build_distroless.outputs.digest }}
-      - name: Logout from DockerHub
-        run: docker logout
-        if: github.event_name != 'pull_request'
-      - name: Logout from GitHub Container Registry
-        run: docker logout ghcr.io
-        if: github.event_name != 'pull_request'
